@@ -39,21 +39,21 @@
   z-index: 1;
 }
 #container2{
-  width:25%;
+  width:100%;
   float: left;
   clear: both;
   position: relative;
-  bottom:50px;
+    top: inherit;
+  bottom: auto;
   background-color: black;
   opacity: 1;
 }
 .sphere2{
-  width:50%;
+  width:25%;
   height:100px;
-  margin: 0px auto;
   float: left;
   margin-top:  20px;
-  margin-left: 3.5%;
+  margin-left: 5%;
   margin-bottom: 10px;
   background-color: white;
   z-index: 1;
@@ -63,13 +63,7 @@
   right:10%;
   top: 50px;
 }
-#bounceshadow{
-  position: relative;
-  right:1.5%;
-  top: 300px;
-  background-color: black;
-  opacity: 0;
-  z-index: -1;
+
 }
 #spin{
   text-align: center;
