@@ -1,0 +1,89 @@
+body{
+  height:5000px;
+  background-color: pink;
+}
+
+
+#container{
+  width:100%;
+  display: inline-block;
+  position: relative;
+  left:auto;
+  bottom: 300px;
+  float: left;
+  background-color: black;
+  border-radius: 0%;
+  opacity: 1;
+}
+#Text{
+  width: 15%;
+  height: 300px;
+  text-align: center;
+  display: inline;
+  float: left;
+  clear: right;
+  background-color: blue;
+  z-index: -1;
+}
+.sphere{
+  width:50%;
+  height:100px;
+  margin: 0px auto;
+  margin-top:  10px;
+  margin-bottom: 10px;
+  align-items: center;
+  background-color: white;
+  border-radius: 100%;
+  z-index: 1;
+}
+#container2{
+  width:100%;
+  float: left;
+  clear: both;
+  position: relative;
+  bottom:300px;
+  background-color: black;
+  opacity: 1;
+}
+.sphere2{
+  width:45%;
+  height:90px;
+  margin: 0px auto;
+  float: right;
+  margin-top:  10px;
+  margin-left: 3.5%;
+  margin-bottom: 10px;
+  background-color: white;
+  z-index: 1;
+}
+#bounce{
+  position: relative;
+  right:50%;
+  top: auto;
+}
+#bounceshadow{
+  position: relative;
+  right:1.5%;
+  top: 300px;
+  background-color: black;
+  opacity: 0;
+  z-index: -1;
+}
+#spin{
+  text-align: center;
+  opacity:1;
+}
+#spinreal{
+ position: relative;
+ left: 48.5%;
+ text-align: center;
+ width: 45%;
+ opacity: 0;
+ -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+animation: mymove 5s infinite;
+
+}
+
+@keyframes mymove {
+    100% {transform: rotate(360deg);}
+}

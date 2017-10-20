@@ -1,0 +1,35 @@
+html, body, * {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+        }
+        
+.canvas {
+    width: 1200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+        }
+        
+.circle {
+    background-color: white;
+    border-radius: 50%;
+    border-width: 5px;
+    height: 595px;
+    width: 595px;
+    margin-right: 5px;
+    float: left;
+    
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+}
+
+.circle:hover {  
+    -webkit-filter: blur(80px); /* Safari */
+    filter: blur(80px);      
+}
+        

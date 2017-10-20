@@ -1,0 +1,73 @@
+body {
+    background-color: skyblue;
+}
+
+.canvas {
+    width: 100%;
+    height: 100%;
+        }
+
+#rectangle1 {
+	width: 250px;
+	height: 650px;
+	background-color: black;
+    position: fixed;
+    bottom: 0;
+    left: 10%;
+    z-index: 1
+}
+
+#rectangle2 {
+	width: 300px;
+	height: 350px;
+	background-color: #232426;
+    position: fixed;
+    bottom: 0;
+    left: 20%;
+    z-index: 2;
+}
+
+#rectangle3 {
+	width: 150px;
+	height: 750px;
+	background-color: #363738;
+    position: fixed;
+    bottom: 0;
+    left: 40%;
+    z-index: 1;
+}
+
+#rectangle4 {
+	width: 250px;
+	height: 650px;
+	background-color: black;
+    position: fixed;
+    bottom: 0;
+    left: 45%;
+    z-index: -1;
+}
+
+#rectangle5 {
+	width: 400px;
+	height: 380px;
+	background-color: #1e2226;
+    position: fixed;
+    bottom: 0;
+    left: 55%;
+    z-index: -6;
+}
+
+#rectangle6 {
+	width: 200px;
+	height: 200px;
+	background-color: #2b2f33;
+    position: fixed;
+    bottom: 0;
+    left: 75%;
+    z-index: 3;
+
+}
+
+#rectangle1:hover, #rectangle2:hover, #rectangle3:hover, #rectangle4:hover, #rectangle5:hover, #rectangle6:hover {
+    z-index: 6;
+}

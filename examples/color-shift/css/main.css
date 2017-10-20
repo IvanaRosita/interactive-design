@@ -1,0 +1,29 @@
+body {
+    background-color: orangered;
+}
+
+.canvas {
+    width: 1200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+        }
+
+.circle {
+	width: 650px;
+	height: 650px;
+	background-color: orangered;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    -webkit-transition: all 7s ease-in-out;
+}
+	
+div.circle:hover {
+    background-color: yellow;
+}

@@ -1,0 +1,79 @@
+
+html, body, * {
+	 margin: 0;
+    padding: 0;
+        
+        overflow: hidden;
+	}
+.canvas {
+    width: 1200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+        }
+
+.brick_left {
+            width: 4.5%;
+            height: 50px;
+            background-color: #d61508;
+            display: block;
+            float: left;
+            margin-right: .55%;
+            margin-bottom: .55%;
+            box-sizing: border-box;
+        }
+        
+.brick_center {
+             width: 9.5%;
+            height: 50px;
+            background-color: #d61508;
+            display: block;
+            float: left;
+              margin-right: .55%;
+            margin-bottom: .55%;
+            box-sizing: border-box;
+            text-align: center;
+
+        }
+        
+.brick_right1 {
+             width: 4.5%;
+            height: 50px;
+            background-color: #d61508;
+            display: block;
+            float: left;
+            margin-bottom: .55%;
+            box-sizing: border-box;
+        }
+        
+           .brick_right2 {
+             width: 9.55%;
+            height: 50px;
+            background-color: #d61508;
+            display: block;
+            float: left;
+            margin-bottom: .55%;
+            box-sizing: border-box;
+        }
+        
+        
+        .brick_left:hover {
+            background-color: transparent;
+        }
+        .brick_center:hover {
+            background-color: transparent;
+        }
+        .brick_right1:hover {
+            background-color: transparent;
+        }
+        
+        .brick_right2:hover {
+            background-color: transparent;
+        }
+        
+        span {
+            color: #d61508;
+  
+        }
+        
