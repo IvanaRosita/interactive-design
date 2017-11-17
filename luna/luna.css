@@ -1,0 +1,224 @@
+.box {
+	max-width: 20vw;
+	padding: 25px;
+	margin: 0 auto;
+	position: relative;
+	font-size: 50px;
+    font-weight: 500;
+	line-height: 2;
+	transform: translateY(-3%);
+  	perspective: 400px;
+    background-color: lightsteelblue;
+    font-family: sans-serif;
+    }
+
+.bg {
+	color:dimgray;
+	margin: 2px;
+    font-family: sans-serif;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  perspective:400px;
+  overflow: hidden;
+  background: #454545;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 99.99%; /* Should be `0` but Safari needs this! (BUG #1) */
+  right: 0;
+}
+
+.wrapper {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transform: rotateX(40deg);
+}
+
+.slides {
+  perspective: 313px;
+  padding: 50px 0px;
+  width: 100%;
+  height: 400px;
+  transform-style: preserve-3d;
+  overflow: auto;
+  transform: translate(-50%, -0%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+.slide {
+  position: relative;
+  margin: auto;
+  width: 600px;
+  height: 400px;
+  transform: rotateX(-40deg);
+  transform-origin: 0 0;
+  box-shadow: inset 0 0 0 5px rgba(100,100,400,.35);
+}
+.title {
+  color: #0ff;
+  font-size: 300%;
+font-family: impact;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  text-transform: none;
+}
+
+
+/* colours
+----------------------------------------- */
+
+.slide:nth-child(1) {
+border-radius: 100%;
+transform: translate(-50%,-50%,50%);
+width: 200px;
+height:200px;
+background: hsla(9, 10%, 50%, .75);
+}
+
+
+.slide:nth-child(2) {
+border-radius: 100%;
+transform: translate(-50%,-50%,50%);
+width: 300px;
+height: 300px;
+background: hsla(25, 40%, 90%, .75);
+}
+
+
+.slide:nth-child(3) {
+    border-radius: 100%;
+transform: translate(-50%,-50%,50%);
+width:400px;
+height: 400px;
+    
+  background: hsla(90, 10%, 10%, .75);
+}
+
+.slide:nth-child(4) {
+    border-radius: 100%;
+transform: translate(-50%,-50%,50%);
+width:500px;
+height: 500px;
+  background: hsla(50, 50%, 15%, .75);
+}
+.slide:nth-child(5) {
+    border-radius: 100%;
+transform: translate(-50%,-50%,50%);
+width:600px;
+height: 600px;
+  background: hsla(10, 100%,10%, .75);
+}
+.slide:nth-child(6) {
+  background: hsla(215, 70%, 50%, .75);
+}
+
+.slide:nth-child(7) {
+  background: hsla(5, 70%, 10%, .75);
+}
+
+.slide:nth-child(8) {
+  background: hsla(11, 1%, 50%, .75);
+}
+
+.slide:nth-child(9) {
+  background: hsla(80, 62%, 10%, .75);
+}
+
+.slide:nth-child(10) {
+  background: hsla(12, 5%, 10%, .75);
+}
+
+.slide:nth-child(11) {
+    background: hsla(70, 70%, 70%, .75);
+}
+
+.slide:nth-child(12) {
+    background: hsla(80, 70%, 3%, .75);
+}
+
+.slide:nth-child(13) {
+    background: hsla(90, 70%, 20%, .75);
+}
+
+.slide:nth-child(14) {
+background: hsla(12, 70%, 10%, .75);
+}
+
+.slide:nth-child(15) {
+  background: hsla(12, 4%, 50%, .75);
+}
+
+.slide:nth-child(16) {
+  background: hsla(65, 35%, 56%, .75);
+}
+
+.slide:nth-child(17) {
+background: hsla(90, 1%, 10%, .75);
+}
+
+
+.slide:nth-child(19) {
+border-radius: 100%;
+transform: translate(-50%,-50%,50%);
+width:600px;
+height: 600px;
+  background: hsla(10, 45%,10%, .75);
+}
+
+/* Debugging
+----------------------------------------- */
+
+label {
+  font: 100%/3.5 impact;
+  background: #fff;
+  padding: .15em .9em;
+  border-radius: 100px;
+  position:fixed;
+  z-index: 1;
+  margin: 3em
+}
+.wrapper {
+  transition: .5s transform;
+}
+.slide {
+  transition: .5s 1s transform;
+}
+.slides {
+  box-shadow: 0 0 0 1px #00f;
+  transition: .5s 2s width;
+}
+#debug {
+  position: absolute;
+  top: -1000em;
+}
+#debug:checked ~ .wrapper {
+  transform: none;
+  transition: .5s 2s transform;
+    
+}
+#debug:checked ~ .wrapper .slide {
+  transform: none;
+  transition: .5s 1s transform;
+}
+#debug:checked ~ .wrapper .slides {
+  width: 600px;
+  transition: .5s width;
+}
+#debug:not(:checked) + label::after {
+  content: ' 2D';
+}
+#debug:checked + label::after {
+  content: ' 3D';
+}
