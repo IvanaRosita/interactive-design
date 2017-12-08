@@ -1,176 +1,281 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
 <head>
-<title>Menu</title>
+  <meta charset="UTF-8">
+  <title>3D Ivana's Carousel</title>
+  
+  
+  
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      *, *::before, *::after {
+  box-sizing: border-box; /* Too much math below to be concerned with standard CSS Box Model element dimensions calculations. Let's not have to account for padding/margins/borders on anything here. */
+}
 
-<div id="Phase 1"></div>
-<div id="Phase 2"></div>
-<div id="Phase 3"></div>
-<div id="Phase 4"></div>
-<div id="Phase 5"></div>
+body {
+  margin: 0;
+  background-image: url(https://i.pinimg.com/originals/92/9e/f8/929ef870545689e0cbd602213117c510.gif);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h1 {
+  margin: 0 0 30px 0;
+  padding: 20px;
+  background-color: rgba(10,20,80,0.9);
+  color: #fff;
+  text-align: center;
+  font-family: Arial;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px -1px #efefef;
+}
+
+.carousel_wrapper {
+  position: relative;
+  width: 920px;
+  margin: 100px auto 0 auto;
+  perspective: 1000px;
+}
+          
+.carousel_wrapper2 {
+  position: absolute;
+  top: 110%;
+  width: 920px;
+  margin: 100px auto 0 auto;
+  perspective: 1000px;
+}
+
+.carousel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateY(-360deg) translateZ(-412px); /* add reverse transformation from the slides */
+  animation: swirl 40s steps(10000, end) infinite; /* run `swirl` animation (defined at end of CSS) infitely, with animation lasting 40 seconds, and 10,000 steps between the FROM and TO values in the animation for a smooth rotation */
+}
+
+.slide {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 300px;
+  height: 187px;
+}
+
+.slide img {
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  box-shadow: 0 0 30px 10px rgba(50, 72, 221, 0.9);
+}
+
+
+/*
+9 Slides total: 360 Degrees (full circle) --> 360/9 = 40 --> our increment for rotation
+
+Some math. Consider how the carousel will be set up. It's going to be a 3D circle, like an orbit. The orientation will be such that it would be like setting a ring down on a table, then bending down and looking at the ring head on from the edge of the table. The main "front" image will be entirely front-facing. The other images will be rotated slightly to make a full circle. You could sketch this out in 2D from a bird's eye view, and you'd end up with a picture like the following:
+
+https://cl.ly/image/2P3E1U0W0c29
+
+Each triangle/piece would be a slide, hence 9 pieces. That being said, let's do some calculations, but we'll use the dimensions of our elements rather than those in the picture.
+
+So, we're rotating all the slides in 40º increments relative to each other, because 360º makes a full circle, and we have 9 elements: 360/9 = 40
+
+In the picture above, we want to find the radius of the circle (which isn't exactly a circle because it's made up of triangles). So we can cut each triangle in half and solve for `r` (radius). We can solve for `r` using some geometry and our own elements' dimensions. 
+
+The width of the slides is 300px. We're going to split those triangles in half and use the TANGENT function in geometry/trigonemty to solve for `r`. And since we're splitting each of the 9 triangles (the slides) in half for this, we need to account for the fact that our key angle is now going to be 20º and not 40º. We can solve for `r` by taking our smaller triangles' width (150px) and dividing by the tangent of 20º (in degrees, not radians). So:
+
+            150
+   r =  -----------
+          tan(20º)
+
+Here's a screenshot of me doing the calculations in JavaScript, right in the browser console!
+
+Math things: https://cl.ly/image/1t0j1V2Y2l2Z
+
+So, `r` is (about) 412px long! This means we need to TRANSLATE the slides in the Z 3-dimensional plane by 412px. This should be done AFTER the rotateY transformation.
+*/
+
+.slide.one {
+  transform: rotateY(0deg) translateZ(412px);
+}
+.slide.two {
+  transform: rotateY(40deg) translateZ(412px);
+}
+.slide.three {
+  transform: rotateY(80deg) translateZ(412px);
+}
+.slide.four {
+  transform: rotateY(120deg) translateZ(412px);
+}
+.slide.five {
+  transform: rotateY(160deg) translateZ(412px);
+}
+.slide.six {
+  transform: rotateY(200deg) translateZ(412px);
+}
+.slide.seven {
+  transform: rotateY(240deg) translateZ(412px);
+}
+.slide.eight {
+  transform: rotateY(280deg) translateZ(412px);
+}
+.slide.nine {
+  transform: rotateY(320deg) translateZ(412px);
+}
+
+/*
+CSS3 ANIMATION
+-------------------
+Simply rotates the carousel around the Y axis by using rotateY and starting at initial value, -360º, and going to final value 0º, then resetting.
+*/
+
+@keyframes swirl {   
+  from {
+    transform: rotateY(-360deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+} 
+
     
-<style>
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 1;
-    overflow: hidden;
-    background-color: midnightblue;
-}
+    p {
+        text-align: center;
+          }
+    </style>
 
-li {
-    float: center;
-}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
-li a, .dropbtn {
-    display: inline-block;
-    color: lightblue;
-    text-align: center;
-    padding: 25px 25px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: blue;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: lightblue;
-    min-width: 115px;
-    box-shadow: 1px 5px 20px 10px rgba(0,0,0,01);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: darkblue;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {background-color: lightyellow}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-</style>
-    
 </head>
 
 <body>
-    
-    <h1>IVANA menucci</h1>
-<p>WELCOME to my website!!!</p>
-    <br>
+  <h1>IVANA'S MICROSITE</h1>
 
+<div class="carousel_wrapper">
+  <div class="carousel">
+    
+      <div class="slide one">
+      <a href="https://positive-learning-sharing.tumblr.com/">
+        <img src="instagram_images/image_01.JPG" />
+          <p>this is a description</p>
+      </a>
+      </div>
+    
+      <div class="slide two">
+        <a href="https://www.instagram.com/ivana_rosita_g/">
+      <img src="instagram_images/image_02.JPG" />
+            </a>
+    </div>
+    
+      <div class="slide three">
+         <a href="../poems/variations/phase_01/poem_couple_01.html" >
+         <img src="instagram_images/image_03.JPG" />
+              </a>
+             </div>
+    
+      <div class="slide four">
+          <a href="../poems/variations/phase_04/poem_couple_20.html" > 
+      <img src="instagram_images/image_04.JPG" />
+          </a>
+              </div>
+    
+      <div class="slide five">
+           <a href="../poems/variations/phase_05/poem_couple_21.html" >
+      <img src="instagram_images/image_05.JPG" />
+          </a>
+    </div>
+    
+      <div class="slide six">
+           <a href="../poems/variations/phase_04/poem_couple_19.html" >
+      <img src="instagram_images/image_06.JPG" />
+          </a>
+    </div>
+    
+      <div class="slide seven">
+          <a href="../poems/variations/phase_03/poem_couple_14.html" >
+      <img src="instagram_images/image_07.JPG" />
+          </a>
+    </div>
+    
+      <div class="slide eight">
+          <a href="../poems/variations/phase_03/poem_couple_15.html" >
+      <img src="instagram_images/image_08.JPG" />
+          </a>
+      </div>
+    <div class="slide nine">
+        <a href="../poems/variations/phase_04/poem_couple_16.html" >
+      <img src="instagram_images/image_09.JPG" />
+        </a>
+    </div>
+  </div><!-- / .carousel -->
+</div><!-- / .carousel_wrapper -->
 
-<ul>
-  <li><a 
-href="#home">HOME</a></li>
+<!--
+SUN IMAGE HERE: https://chivethebrigade.files.wordpress.com/2012/03/sun-920-32.jpg
+-->
     
-  <li><a                         href="#contact">CONTACT</a></li>
+  <div class="carousel_wrapper2">
+  <div class="carousel">
     
-  <li class="dropdown">
-<a href="javascript:void(0)" class="dropbtn">PHASE 1</a>
-    <div class="dropdown-content">
-   
-   
-        <a href="variations/phase_01/poem_couple_01.html">Poem 01</a>
-        
-        <a href="variations/phase_01/poem_couple_02.html">Poem 02</a>
-        
-        <a href="variations/phase_01/poem_couple_03.html">Poem 03</a>
-        
-        <a href="variations/phase_01/poem_couple_04.html">Poem 04</a>
-        
-        <a href="variations/phase_01/poem_couple_05.html">Poem 05</a>
-        </div>
-      
-      
-      <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">PHASE 2</a>
-    <div class="dropdown-content">
-        
-        <a href="variations/phase_02/poem_couple_06.html">Poem 06</a>
-        
-        <a href="variations/phase_02/poem_couple_07.html">Poem 07</a>
-        
-        <a href="variations/phase_02/poem_couple_08.html">Poem 08</a>
-        
-        <a href="variations/phase_02/poem_couple_09.html">Poem 09</a>
-        
-        <a href="variations/phase_02/poem_couple_10.html">Poem 10</a>
-        </div>
-          
-          
-    <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">PHASE 3</a>
-    <div class="dropdown-content">
-        
-        <a href="variations/phase_03/poem_couple_11.html">Poem 11</a>
-        
-        <a href="variations/phase_03/poem_couple_12.html">Poem 12</a>
-        
-        <a href="variations/phase_03/poem_couple_13.html">Poem 13</a>
-        
-        <a href="variations/phase_03/poem_couple_14.html">Poem 14</a>
-        
-        <a href="variations/phase_03/poem_couple_15.html">Poem 15</a>
-    </div>
-        
-              
-    <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">PHASE 4</a>
-    <div class="dropdown-content">
-        <a href="variations/phase_04/poem_couple_16.html">Poem 16</a>
-        
-        <a href="variations/phase_04/poem_couple_17.html">Poem 17</a>
-        
-        <a href="variations/phase_04/poem_couple_18.html">Poem 18</a>
-        
-        <a href="variations/phase_04/poem_couple_19.html">Poem 19</a>
-        
-        <a href="variations/phase_04/poem_couple_20.html">Poem 20</a>
-    </div>
-                  
+      <div class="slide one">
+      <a href="../exercises/hover_effects/index.html">
+        <img src="instagram_images/image_10.JPG" />  
+      </a>
+      </div>
     
-    <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">PHASE 5</a>
-    <div class="dropdown-content">
-        <a href="variations/phase_05/poem_couple_21.html">Poem 21</a>
-        
-        <a href="variations/phase_05/poem_couple_22.html">Poem 22</a>
-        
-        <a href="variations/phase_05/poem_couple_23.html">Poem 23</a>
-        
-        <a href="variations/phase_05/poem_couple_24.html">Poem 24</a>
-        
-        <a href="variations/phase_05/poem_couple_25.html">Poem 25</a>
+      <div class="slide two">
+        <a href="../exercises/flex_box_demo/index.html">
+      <img src="instagram_images/image_11.JPG" />
+            </a>
     </div>
-        
-        
-        <li class="dropdown">
-    <a href="javascript:void(0)" class="dropbtn">PLATFORMS</a>
-    <div class="dropdown-content">
-        <a href="https://www.instagram.com/ivana_rosita_g/">Instagram</a>
-        
-      <a href="https://www.tumblr.com/blog/positive-learning-sharing">Tumblr</a>
-        
-        <a href="luna/index.html">Microsites</a>
-        
-        
-        
-        
-     </div>
-   </li>
-</ul>
+    
+      <div class="slide three">
+         <a href="../exercises/sentence_generator/sentence_generator2.html" >
+         <img src="instagram_images/image_12.JPG" />
+              </a>
+             </div>
+    
+      <div class="slide four">
+          <a href="../exercises/responsive_page/examples/image/index.html" > 
+      <img src="instagram_images/image_13.JPG" />
+          </a>
+              </div>
+    
+      <div class="slide five">
+           <a href="../exercises/malevich/index.html" >
+      <img src="instagram_images/image_14.JPG" />
+          </a>
+    </div>
+    
+      <div class="slide six">
+           <a href="../luna/index.html" >
+      <img src="instagram_images/image_15.JPG" />
+          </a>
+    </div>
+    
+      <div class="slide seven">
+          <a href="../exercises/jquery/index.html" >
+      <img src="instagram_images/image_16.JPG" />
+          </a>
+    </div>
+    
+      <div class="slide eight">
+          <a href="../3d_carousel_01/index.html" >
+      <img src="instagram_images/image_17.JPG" />
+          </a>
+      </div>
+    <div class="slide nine">
+        <a href="../index.html" >
+      <img src="instagram_images/image_18.JPG" />
+        </a>
+    </div>
+  </div><!-- / .carousel -->
+</div>
+    
+    
+    
+    <script  src="js/index.js"></script>
 
-    </body>
+</body>
 </html>
