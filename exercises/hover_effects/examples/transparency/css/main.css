@@ -16,7 +16,7 @@ html, body, * {
 .brick_left {
             width: 4.5%;
             height: 50px;
-            background-color: #d61508;
+            background-color: dodgerblue;
             display: block;
             float: left;
             margin-right: .55%;
@@ -25,12 +25,12 @@ html, body, * {
         }
         
 .brick_center {
-             width: 9.5%;
-            height: 50px;
-            background-color: #d61508;
+            width: 9.5%;
+            height: 130px;
+            background-color:greenyellow;
             display: block;
             float: left;
-              margin-right: .55%;
+            margin-right: .55%;
             margin-bottom: .55%;
             box-sizing: border-box;
             text-align: center;
@@ -50,7 +50,7 @@ html, body, * {
            .brick_right2 {
              width: 9.55%;
             height: 50px;
-            background-color: #d61508;
+            background-color: salmon;
             display: block;
             float: left;
             margin-bottom: .55%;
@@ -62,18 +62,23 @@ html, body, * {
             background-color: transparent;
         }
         .brick_center:hover {
-            background-color: transparent;
+            background-color: blueviolet;
         }
         .brick_right1:hover {
             background-color: transparent;
         }
         
         .brick_right2:hover {
-            background-color: transparent;
+            background-color: navy;
         }
         
         span {
-            color: #d61508;
+            color: blueviolet;
+            font-size: 25px;
+            text-align: center;
+            text-shadow: 10 px;
+            font-family: sans-serif;
+            
   
         }
         
